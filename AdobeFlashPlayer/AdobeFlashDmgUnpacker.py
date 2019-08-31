@@ -18,6 +18,7 @@
 ###
 ###
 
+from __future__ import absolute_import
 import os
 import fileinput
 import FoundationPlist
@@ -96,7 +97,7 @@ class AdobeFlashDmgUnpacker(Processor):
             with open(patched_postflight_path, "wb") as fref:
                 fref.write(postflight.replace(
                     "/Library/Internet Plug-Ins", temp_path))
-            os.chmod(patched_postflight_path, 0700)
+            os.chmod(patched_postflight_path, 0o700)
 
             # Run patched postflight to unpack plugin.
             subprocess.check_call(patched_postflight_path)
