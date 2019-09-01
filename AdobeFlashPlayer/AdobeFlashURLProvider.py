@@ -17,11 +17,14 @@
 
 
 from __future__ import absolute_import
-import urllib2
 from xml.etree import ElementTree
 
 from autopkglib import Processor, ProcessorError
 
+try:
+    from urllib.request import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["AdobeFlashURLProvider"]
 
@@ -58,7 +61,7 @@ class AdobeFlashURLProvider(Processor):
         if not version:
             # Read update XML.
             try:
-                fref = urllib2.urlopen(UPDATE_XML_URL)
+                fref = urlopen(UPDATE_XML_URL)
                 xml_data = fref.read()
                 fref.close()
             except BaseException as err:
