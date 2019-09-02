@@ -19,16 +19,14 @@
 ###
 
 from __future__ import absolute_import
+
 import os
-import fileinput
-import FoundationPlist
-import re
 import shutil
 import subprocess
 import tempfile
 
+import FoundationPlist
 from autopkglib import Processor, ProcessorError
-
 
 __all__ = ["AdobeFlashDmgUnpacker"]
 
