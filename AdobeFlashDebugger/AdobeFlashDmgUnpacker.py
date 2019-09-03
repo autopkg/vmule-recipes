@@ -129,7 +129,7 @@ class AdobeFlashDmgUnpacker(Processor):
             info = self.read_bundle_info(plugin_path)
             self.env["version"] = info["CFBundleShortVersionString"]
 
-        except BaseException as err:
+        except Exception as err:
             raise ProcessorError(err)
 
 if __name__ == '__main__':
